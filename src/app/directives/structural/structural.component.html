@@ -1,0 +1,46 @@
+<h1 class="text-center">{{ title }}</h1>
+
+<h3>1. ngIf</h3>
+
+<button *ngIf="!isLoggedIn" class="btn btn-success" (click)="login()">
+  Log In
+</button>
+
+<div *ngIf="isLoggedIn">
+  <p>Username:{{ username }}</p>
+  <button class="btn btn-danger" (click)="logout()">Log out</button>
+</div>
+
+<div class="form-group">
+  <label for="">Nhập tuổi</label>
+  <input type="text" class="form-control" [(ngModel)]="age" />
+</div>
+
+<p *ngIf="age >= 18; else isNotOldEnoughBlock">Đã đủ tuổi</p>
+<!-- ng-template:component ảo(tương tự Fragment trong reactjs) -->
+<ng-template #isNotOldEnoughBlock>
+  <p *ngIf="age < 18">Chưa đủ tuổi</p>
+</ng-template>
+
+<h3>2. ngFor</h3>
+<ng-container *ngIf="rappers.length>0">
+  <ul class="list-group">
+    <li
+      *ngFor="
+        let rapper of rappers;
+        index as idx;
+        count as length;
+        first as isFirst;
+        last as isLast;
+        even as isEven;
+        odd as isOdd
+      "
+      class="list-group-item"
+    >
+      {{ rapper }}-{{ idx + 1 }} - {{ length }} -
+      {{ "first" + " " + isFirst }}-{{ "last" + " " + isLast }}-{{
+        "even" + " " + isEven
+      }}-{{ "Odd" + " " + isOdd }}
+    </li>
+  </ul>
+</ng-container>
