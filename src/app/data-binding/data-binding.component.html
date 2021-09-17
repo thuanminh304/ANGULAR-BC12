@@ -1,0 +1,53 @@
+<h1 class="text-center">{{ title }}</h1>
+
+<!-- ONE WAY BINDING -->
+<div class="bg-success text-white">
+  <h3>1. Interpolation</h3>
+  <p>Họ tên : {{ fullName }}</p>
+  <p>Tuổi {{ age }}</p>
+  <p>Tình trạng hôn nhân : {{ isMarried ? "Đã kết hôn" : "Độc thân" }}</p>
+  <p>Username: {{ user.username }}</p>
+  <p>Role: {{ user.role ? "admin" : "client" }}</p>
+</div>
+
+<div>
+  <img width="100%" src="{{ imgSrc }}" alt="" />
+</div>
+
+<hr />
+
+<div class="bg-danger">
+  <h3>2. Property binding (one-way)</h3>
+  <!-- c1 -->
+  <img width="100%" [src]="imgSrc" alt="" />
+  <!-- c2 -->
+  <img width="50%" bind-src="imgSrc" alt="" />
+  <br />
+  <button [disabled]="isDisable" class="btn btn-success">
+    Bring me Thanos !!!
+  </button>
+</div>
+
+<div>
+  <h3>3. Event binding(1-way)</h3>
+  <button class="btn btn-info" (click)="clickMe()">Click Me</button>
+</div>
+
+<!-- <div class="form-group">
+  <label for="">Email</label>
+  <input type="text" (keyup)="getEmail($event)" class="form-control" />
+</div>
+<p>Email: {{email}}</p> -->
+
+<hr />
+<hr />
+
+<div>
+  <h3>4. 2-way binding (ngModel)</h3>
+  <!-- phải import FormsModule để dùng ngModel -->
+  <div class="form-group">
+    <label>Email</label>
+    <input type="text" class="form-control" [(ngModel)]="email" />
+  </div>
+  <p>Email: {{ email }}</p>
+</div>
